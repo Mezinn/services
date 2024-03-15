@@ -1,0 +1,44 @@
+version: '3.0'
+
+services:
+  php:
+    tty: true
+    build:
+      context: php
+    working_dir: /var/www
+    user: www-data
+    volumes:
+      - /home/mezinn/projects/shop/src:/var/www
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+
+  mysql_order:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql_root_password
+      - MYSQL_DATABASE=mysql_database
+      - MYSQL_USER=mysql_user
+      - MYSQL_PASSWORD=mysql_password
+    ports:
+      - "3306:3306"
+
+  mysql_product:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql_root_password
+      - MYSQL_DATABASE=mysql_database
+      - MYSQL_USER=mysql_user
+      - MYSQL_PASSWORD=mysql_password
+    ports:
+      - "3307:3306"
+
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - DEFAULT_USER=rabbitmq_user
+      - DEFAULT_PASS=rabbitmq_password
+

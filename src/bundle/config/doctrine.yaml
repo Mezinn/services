@@ -1,0 +1,9 @@
+doctrine:
+    orm:
+        mappings:
+            Product\:
+                type: attribute
+                is_bundle: true
+                dir: 'Entity'
+                prefix: 'Product\Entity'
+                alias: Product

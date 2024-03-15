@@ -1,0 +1,8 @@
+framework:
+  messenger:
+    transports:
+      products: '%env(MESSENGER_TRANSPORT_DSN)%'
+      failed: 'doctrine://default?queue_name=failed_products'
+
+    routing:
+      'Product\Message\ProductCreatedMessage': products

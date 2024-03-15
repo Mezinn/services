@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+    autoconfigure: true
+  Product\:
+    resource: '../src/'
+    exclude:
+      - '../src/DependencyInjection/'
+      - '../src/Entity/'
+      - '../src/DTOs'
+      - '../src/Message'
